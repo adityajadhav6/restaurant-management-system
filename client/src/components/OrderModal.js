@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 const menuItems = [
-  { name: 'Pizza', price: 200 },
+  { name: 'Pizza', price: 150 },
   { name: 'Fries', price: 80 },
-  { name: 'Soda', price: 50 },
+  { name: 'Soda', price: 20 },
   { name: 'Water', price: 20 },
+  { name: 'Burger', price: 85 },
+  { name: 'Pasta', price: 120 }, 
+  { name: 'Ice Cream', price: 30 },
+  { name: 'Coffee', price: 55 }, 
 ];
 
 const OrderModal = ({ table, onClose, onSaveOrders }) => {
@@ -112,7 +116,7 @@ const OrderModal = ({ table, onClose, onSaveOrders }) => {
             <div style={{ marginTop: '20px' }}>
               {orders.map((item, index) => (
                 <div className="order-item" key={index} style={{ marginBottom: '10px' }}>
-                  <span>{item.name} - ₹{item.price} x {item.quantity}</span>
+                  <span>{item.name}</span> {/* Only display the item name */}
                   <button onClick={() => deleteItem(index)}>Delete</button>
                   <div className="quantity-selector">
                     <button
@@ -142,7 +146,7 @@ const OrderModal = ({ table, onClose, onSaveOrders }) => {
         {showBill && (
           <div className="bill-paper">
             <h3>Adi Cafe</h3>
-            <p>Table: {table.id % 2 === 0 ? `R-${table.id}` : `T-${table.id}`}</p>
+            <p>Table: {table.name}</p> {/* Use the table's custom name */}
             <p>Date/Time: {formatDateTime()}</p>
             <hr />
             <ul>
