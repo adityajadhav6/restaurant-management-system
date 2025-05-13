@@ -13,7 +13,6 @@ Welcome to the **Restaurant Management System**! This project helps manage resta
 - 🪑 **Manage Tables**: Add, update, and delete tables
 - 🛒 **Place and Manage Orders**: Add items, update quantities, and delete orders
 - 🧾 **Generate Bills**: Automatically calculate totals with taxes
-- 📱 **Responsive UI**: Easy to use on any device
 
 ---
 
@@ -32,4 +31,4 @@ Before you begin, ensure you have the following installed:
 ### 2️⃣ Clone the Repository
 1. Open your terminal and run:
    ```sh
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/your-username/your-repo-name.git](https://github.com/adityajadhav6/restaurant-management-system.git
