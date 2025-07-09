@@ -1,4 +1,4 @@
-// server/server.js
+//server.js
 require('dotenv').config(); // Load .env first
 
 const express = require('express');
@@ -9,13 +9,22 @@ const tableRoutes = require('./routes/tableRoutes');
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('✅ Connected to MongoDB Atlas'))
-.catch((err) => console.error('❌ MongoDB connection error:', err));
+// MongoDB connection with retry logic
+const connectWithRetry = () => {
+  mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch((err) => {
+    console.error('❌ MongoDB connection error:', err);
+    console.log('Retrying in 5 seconds...');
+    setTimeout(connectWithRetry, 5000); // Retry after 5 seconds
+  });
+};
+
+// Call the retry function
+connectWithRetry();
 
 // Middleware
 app.use(cors({

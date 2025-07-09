@@ -1,0 +1,6 @@
+# filepath: /Users/aditya/Desktop/restaurant-management-system/server/.dockerignore
+node_modules
+npm-debug.log
+.env
+Dockerfile
+docker-compose.yml

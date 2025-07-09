@@ -6,7 +6,17 @@ const Table = require('../models/Table'); // Import the Table model
 router.get('/', async (req, res) => {
   try {
     const tables = await Table.find();
-    res.json(tables);
+    // Format the response to display line by line
+    const formattedTables = tables.map((table) => ({
+      id: table._id,
+      name: table.name,
+      type: table.type,
+      status: table.status,
+      orders: table.orders,
+      createdAt: table.createdAt,
+      updatedAt: table.updatedAt,
+    }));
+    res.json(formattedTables);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch tables' });
   }
@@ -32,8 +42,11 @@ router.post('/', async (req, res) => {
     const saved = await newTable.save();
     res.json(saved);
   } catch (err) {
+    console.error('Error creating table:', err); // Log the error
     if (err.code === 11000) {
       res.status(400).json({ error: 'Table name must be unique' });
+    } else if (err.name === 'ValidationError') {
+      res.status(400).json({ error: err.message }); // Return validation error details
     } else {
       res.status(500).json({ error: 'Failed to create table' });
     }
