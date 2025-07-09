@@ -1,7 +1,7 @@
 # 🍽️ Restaurant Management System
 **💻 Try out the live version:** [Step into the manager’s dashboard](https://client-adityajadhav6s-projects.vercel.app)
 ---
-# Welcome to the **Restaurant Management System**! This project helps manage restaurant tables, orders, and billing efficiently.
+# Welcome, This project helps manage restaurant tables, orders, and billing efficiently.
 
 ## 🛠️ Built With
 - **⚡ Node.js** and **Express.js** for the backend
